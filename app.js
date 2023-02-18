@@ -22,7 +22,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware')
 let client_id = process.env.CLIENT_ID
 let client_secret = process.env.CLIENT_SECRET
 //let redirect_uri = 'http://localhost:3000/itinerary'
-let redirect_uri = 'https://tripify-backend.onrender.com/'
+let redirect_uri = 'https://tripify-backend.onrender.com/callback'
 
 /**
  * Generates a random string containing numbers and letters
@@ -49,7 +49,7 @@ app.use(express.static(__dirname + '/public'))
 
 //app.use('/back', proxy('http://localhost:3000'))
 app.use('/back', createProxyMiddleware({
-    target: 'https://tripify-iota.vercel.app/',
+    target: 'https://tripify-iota.vercel.app/itinerary',
     changeOrigin: true,
     pathRewrite: {
         '^/back': '/'
@@ -122,7 +122,7 @@ app.get('/callback', function(req, res) {
             })
           console.log(newbod);
             //res.send(body)
-            res.redirect('https://tripify-iota.vercel.app/itinerary' + JSON.stringify(newbod))
+            res.redirect('https://tripify-iota.vercel.app/itinerary?info=' + JSON.stringify(newbod))
             //res.redirect('/back?info=' + JSON.stringify(newbod))
             // res.send(body)
            // fetch(`http://localhost:3000/itinerary?info=${JSON.stringify(body)}`)
