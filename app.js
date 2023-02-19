@@ -14,7 +14,7 @@ require('dotenv').config()
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var proxy = require('express-http-proxy')
-const { createProxyMiddleware } = require('http-proxy-middleware')
+//const { createProxyMiddleware } = require('http-proxy-middleware')
 
 //var client_id = 'CLIENT_ID'; // Your client id
 //var client_secret = 'CLIENT_SECRET'; // Your secret
@@ -48,13 +48,13 @@ app.use(express.static(__dirname + '/public'))
    .use(cookieParser());
 
 //app.use('/back', proxy('http://localhost:3000'))
-app.use('/back', createProxyMiddleware({
-    target: 'https://tripify-iota.vercel.app/itinerary',
-    changeOrigin: true,
-    pathRewrite: {
-        '^/back': '/'
-    }
-}))
+// app.use('/back', createProxyMiddleware({
+//     target: 'https://tripify-iota.vercel.app/itinerary',
+//     changeOrigin: true,
+//     pathRewrite: {
+//         '^/back': '/'
+//     }
+// }))
 
 app.get('/login', function(req, res) {
 
