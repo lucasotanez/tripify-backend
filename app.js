@@ -59,10 +59,6 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/login', function(req, res) {
 
-  fetch('https://api.ipify.org/?format=json')
-    .then(results => results.json())
-    .then(console.log)
-
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
@@ -82,6 +78,9 @@ app.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
+  fetch('https://api.ipify.org/?format=json')
+    .then(results => results.json())
+    .then(console.log)
 
   var code = req.query.code || null;
   var state = req.query.state || null;
