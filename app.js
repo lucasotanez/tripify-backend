@@ -29,10 +29,6 @@ let redirect_uri = 'https://tripify-backend.onrender.com/callback'
  * @return {string} The generated string
  */
 
-fetch('https://api.ipify.org/?format=json')
-  .then(results => results.json())
-  .then(console.log)
-
 var generateRandomString = function(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -64,6 +60,9 @@ app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
+
+  console.log(ip);
+  console.log("after ip");
 
   // your application requests authorization
   var scope = 'user-top-read';
