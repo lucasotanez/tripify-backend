@@ -117,6 +117,7 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
+            if (!body.items) res.redirect('/')
             let newbod = body.items.map((item) => {
                 return item.name
             })
