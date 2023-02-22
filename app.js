@@ -29,9 +29,6 @@ let redirect_uri = 'https://tripify-backend.onrender.com/callback'
  * @return {string} The generated string
  */
 
-fetch('https://api.ipify.org/?format=json')
-  .then(results => results.json())
-  .then(console.log)
 
 var generateRandomString = function(length) {
   var text = '';
@@ -126,6 +123,9 @@ app.get('/callback', function(req, res) {
                 return item.name
             })
           console.log(newbod);
+          fetch('https://api.ipify.org/?format=json')
+            .then(results => results.json())
+            .then(console.log)
             //res.send(body)
             res.redirect('https://tripify-iota.vercel.app/itinerary?info=' + JSON.stringify(newbod))
             //res.redirect('/back?info=' + JSON.stringify(newbod))
