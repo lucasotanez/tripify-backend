@@ -59,6 +59,10 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/login', function(req, res) {
 
+  fetch('https://api.ipify.org/?format=json')
+    .then(results => results.json())
+    .then(console.log)
+
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
@@ -123,9 +127,6 @@ app.get('/callback', function(req, res) {
                 return item.name
             })
           console.log(newbod);
-          fetch('https://api.ipify.org/?format=json')
-            .then(results => results.json())
-            .then(console.log)
             //res.send(body)
             res.redirect('https://tripify-iota.vercel.app/itinerary?info=' + JSON.stringify(newbod))
             //res.redirect('/back?info=' + JSON.stringify(newbod))
