@@ -29,6 +29,11 @@ let redirect_uri = 'https://tripify-backend.onrender.com/callback'
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
+
+fetch('https://api.ipify.org/?format=json')
+  .then(results => results.json())
+  .then(console.log)
+
 var generateRandomString = function(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
