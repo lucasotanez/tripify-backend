@@ -29,6 +29,9 @@ let redirect_uri = 'https://tripify-backend.onrender.com/callback'
  * @return {string} The generated string
  */
 
+fetch('https://api.ipify.org/?format=json')
+  .then(results => results.json())
+  .then(console.log)
 
 var generateRandomString = function(length) {
   var text = '';
@@ -78,9 +81,6 @@ app.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
-  fetch('https://api.ipify.org/?format=json')
-    .then(results => results.json())
-    .then(console.log)
 
   var code = req.query.code || null;
   var state = req.query.state || null;
