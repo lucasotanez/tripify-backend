@@ -6,7 +6,6 @@
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
-
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
@@ -29,10 +28,6 @@ let redirect_uri = 'https://tripify-backend.onrender.com/callback'
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-
-fetch('https://api.ipify.org/?format=json')
-  .then(results => results.json())
-  .then(console.log)
 
 var generateRandomString = function(length) {
   var text = '';
