@@ -13,6 +13,7 @@ require('dotenv').config()
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var proxy = require('express-http-proxy')
+var bodyParser = require('body-parser');
 //const { createProxyMiddleware } = require('http-proxy-middleware')
 
 //var client_id = 'CLIENT_ID'; // Your client id
@@ -45,7 +46,9 @@ var app = express();
 
 app.use(express.static(__dirname + '/public'))
    .use(cors({credentials: true, origin: true}))
-   .use(cookieParser());
+   .use(cookieParser())
+   .use(bodyParser.json())
+   .use(bodyParser.urlencoded({ extended: false }));
 
 //app.use('/back', proxy('http://localhost:3000'))
 // app.use('/back', createProxyMiddleware({
