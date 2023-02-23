@@ -56,13 +56,15 @@ app.use(express.static(__dirname + '/public'))
 //     }
 // }))
 
+app.post('/getip', (req, res) =>
+{
+  console.log(req.body.ip);
+})
+
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
-
-  console.log(ip);
-  console.log("after ip");
 
   // your application requests authorization
   var scope = 'user-top-read';
