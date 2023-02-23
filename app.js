@@ -61,7 +61,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.post('/getip', (req, res) =>
 {
-  console.log(req.body.ip);
+  console.log(req.body.ip_);
 })
 
 app.get('/login', function(req, res) {
